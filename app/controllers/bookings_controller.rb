@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = booking.all
+    @bookings = Booking.all
   end
 
   # GET /bookings/1
@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
 
   # GET /bookings/new
   def new
-    @booking = booking.new
+    @booking = Booking.new
   end
 
   # GET /bookings/1/edit
@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
   # POST /bookings
   # POST /bookings.json
   def create
-    @booking = booking.new(booking_params)
+    @booking = Booking.new(booking_params)
 
     respond_to do |format|
       if @booking.save
