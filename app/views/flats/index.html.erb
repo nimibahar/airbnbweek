@@ -1,0 +1,18 @@
+<h1>Flats available in <%= @city %></h1>
+
+<div class="container">
+  <div class="row">
+
+    <% @flats.each do |flat| %>
+    <div class="col-xs-12 col-md-4">
+      <%= link_to flat_path(flat) do %>
+    <h3>Flat:</h3>
+
+      <div class="card" style="background-image: url('<%= flat.photos.first.try(:file_key) %>');">
+        <div class="card-category"><%= flat.price %></div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>

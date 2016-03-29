@@ -1,6 +1,13 @@
 class FlatsController < ApplicationController
   before_action :flat, only: [:show, :edit, :destroy, :update]
 
+  def index
+    # byebu//g
+    @flats = Flat.where(city: params[:city])
+    @city = params[:city]
+
+  end
+
   def show
   end
 
@@ -21,7 +28,7 @@ class FlatsController < ApplicationController
   end
 
   def update
-    @flat.flat_attributes(flat_params)
+    @flat.update_attributes(flat_params)
     if @flat.save
       redirect_to flat_path(@flat)
     else
@@ -41,6 +48,6 @@ private
   end
 
   def flat_params
-    params.require(:flat).permit(:address, :city, :price :rooms)
+    params.require(:flat).permit(:address, :city, :price, :rooms)
   end
 end
