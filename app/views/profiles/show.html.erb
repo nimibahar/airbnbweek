@@ -1,0 +1,40 @@
+<div class="media">
+  <div class="media-body">
+    <div class="media-section">
+      <h2><%= image_tag 'romain.jpeg', id: "avatar" %>
+        <%= @profile.fname %> <%= @profile.lname%></h2>
+      </div>
+      <div class="media-section">
+        <h2>Pictures</h2>
+        <%= image_tag 'amazingbackgroung.jpg' %>
+      </div>
+    </div>
+    <div class="media-aside">
+      <div class="media-section">
+        <h2>Share</h2>
+        <div class="share-links">
+          <a href="#" class="share-link bg-facebook">
+            <i class="fa fa-facebook"></i>
+          </a>
+          <a href="#" class="share-link bg-twitter">
+            <i class="fa fa-twitter"></i>
+          </a>
+          <a href="#" class="share-link bg-email">
+            <i class="fa fa-envelope-o"></i>
+          </a>
+          <a href="#" class="share-link bg-text">
+            <i class="fa fa-mobile"></i>
+          </a>
+        </div>
+      </div>
+      <div class="media-section">
+        <h2>Description</h2>
+        <%= @user.email %>
+      </div>
+      <div class="media-section">
+
+
+      </div>
+    </div>
+  </div>
+
