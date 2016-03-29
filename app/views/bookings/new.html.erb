@@ -1,2 +1,10 @@
 <h1>Bookings#new</h1>
 <p>Find me in app/views/bookings/new.html.erb</p>
+
+
+<%= simple_form_for @user do |f| %>
+  <%= f.input :city %>
+  <%= f.input :field_name, html: { class: "daterange" } %>
+  <%= f.input :guests %>
+  <%= f.button :submit %>
+<% end %>
