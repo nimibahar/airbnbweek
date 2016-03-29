@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160329113838) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +54,6 @@ ActiveRecord::Schema.define(version: 20160329113838) do
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -77,5 +74,4 @@ ActiveRecord::Schema.define(version: 20160329113838) do
 
   add_foreign_key "photos", "flats"
   add_foreign_key "profiles", "users"
-
 end
