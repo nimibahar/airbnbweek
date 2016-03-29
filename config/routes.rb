@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-
   root 'pages#welcome'
 
   devise_for :users
+
   resources :flats do
     resources :photos
   end
 
+
   resources :users, except: [:index, :create, :new, :edit, :show, :update, :destroy] do
     resources :bookings
+    resources :profiles
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
