@@ -1,6 +1,12 @@
 class FlatsController < ApplicationController
   before_action :flat, only: [:show, :edit, :destroy, :update]
 
+  def index
+    # byebu//g
+    @flats = Flat.find_by_city(params[:city])
+    @city = params[:city]
+  end
+
   def show
   end
 
@@ -41,6 +47,6 @@ private
   end
 
   def flat_params
-    params.require(:flat).permit(:address, :city, :price :rooms)
+    params.require(:flat).permit(:address, :city, :price, :rooms)
   end
 end
