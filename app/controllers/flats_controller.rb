@@ -3,8 +3,9 @@ class FlatsController < ApplicationController
 
   def index
     # byebu//g
-    @flats = Flat.find_by_city(params[:city])
+    @flats = Flat.where(city: params[:city])
     @city = params[:city]
+
   end
 
   def show
@@ -27,7 +28,7 @@ class FlatsController < ApplicationController
   end
 
   def update
-    @flat.flat_attributes(flat_params)
+    @flat.update_attributes(flat_params)
     if @flat.save
       redirect_to flat_path(@flat)
     else

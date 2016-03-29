@@ -5,10 +5,11 @@
 
     <% @flats.each do |flat| %>
     <div class="col-xs-12 col-md-4">
-      <%= link_to root_path do %>
+      <%= link_to flat_path(flat) do %>
+    <h3>Flat:</h3>
 
-      <div class="card" style="background-image: url(<%= image_tag("#{flat.photos.first}" ) %> );">
-        <div class="card-category"><%= "#{flat.price}" %></div>
+      <div class="card" style="background-image: url('<%= flat.photos.first.try(:file_key) %>');">
+        <div class="card-category"><%= flat.price %></div>
       </div>
       <% end %>
     </div>

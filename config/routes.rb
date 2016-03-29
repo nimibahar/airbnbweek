@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root 'pages#welcome'
 
   devise_for :users
-  resources :flats
+  resources :flats do
+    resources :photos
+  end
 
   resources :users, except: [:index, :create, :new, :edit, :show, :update, :destroy] do
     resources :bookings
