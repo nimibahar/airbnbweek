@@ -63,6 +63,11 @@
             <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
             <% end %>
           </li>
+          <li>
+            <%= link_to new_flat_path do %>
+            <i class="fa fa-plus"></i>  <%= t ".profile", default: "Add a flat" %>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>

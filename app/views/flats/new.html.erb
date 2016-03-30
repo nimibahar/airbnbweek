@@ -1,12 +1,14 @@
 <h1 class="text-center">New Flat</h1>
 <div class="container">
 
-<%= simple_form_for @flat do |f| %>
-<%= f.input :address %>
-<%= f.input :city %>
-<%= f.input :price %>
-<%= f.input :rooms %>
-<%= f.button :submit %>
-
-<% end %>
+  <%= simple_form_for @flat do |f| %>
+    <%= f.input :address %>
+    <%= f.input :city %>
+    <%= f.input :price %>
+    <%= f.input :rooms %>
+    <%= f.button :submit %>
+  <% end %>
 </div>
+
+
+
