@@ -1,6 +1,8 @@
 <h1>Bookings#new</h1>
 <p>Find me in app/views/bookings/new.html.erb</p>
 
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
@@ -10,6 +12,13 @@
       <%= f.input :check_out %>
       <%= f.button :submit %>
       <% end %>
+
+      <div class="container card">
+      <%= image_tag @flat.photos.first.cloudinary %>
+      </div>
+
     </div>
   </div>
 </div>
+
+
