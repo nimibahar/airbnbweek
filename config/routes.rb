@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :flats do
+    resources :bookings
     resources :photos
   end
 
 
   resources :users, except: [:index, :create, :new, :edit, :show, :update, :destroy] do
-    resources :bookings
     resources :profiles
   end
 
