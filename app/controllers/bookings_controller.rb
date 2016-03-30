@@ -1,5 +1,7 @@
 class BookingsController < ApplicationController
-   before_action :set_booking, only: [:show, :edit, :update, :destroy]
+   before_action :set_flat, only: [:new, :create, :show, :edit, :update, :destroy]
+
+   before_action :authenticate_user!
 
   # GET /bookings
   # GET /bookings.json
@@ -10,7 +12,9 @@ class BookingsController < ApplicationController
   # GET /bookings/1
   # GET /bookings/1.json
   def show
-    @user = User.new
+    @booking = Booking.find(params[:id])
+    # @flat = Flat.find(params[:flat_id])
+
   end
 
   # GET /bookings/new
@@ -29,7 +33,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'booking was successfully created.' }
+        format.html { redirect_to flat_booking_path(@flat,@booking), notice: 'booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }
@@ -64,8 +68,8 @@ class BookingsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_booking
-      @booking = booking.find(params[:id])
+    def set_flat
+      @flat = Flat.find(params[:flat_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

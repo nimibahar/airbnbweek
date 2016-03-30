@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   root 'pages#welcome'
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  resources :flats
+  resources :flats do
+    resources :bookings
+  end
+
   resources :photos, only: [:create]
 
   resources :users, except: [:index, :create, :new, :edit, :show, :update, :destroy] do
-    resources :bookings
     resources :profiles
   end
 
