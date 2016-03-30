@@ -1,7 +1,7 @@
 <div class="media">
   <div class="media-body">
     <div class="media-section">
-      <h2><%= image_tag 'romain.jpeg', id: "avatar" %>
+      <h2><%= image_tag @profile.photo.url(:bright_face) , id: "avatar" %>
         <%= @profile.fname %> <%= @profile.lname%></h2>
       </div>
       <div class="media-section">
