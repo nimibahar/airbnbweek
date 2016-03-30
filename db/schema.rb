@@ -30,7 +30,10 @@ ActiveRecord::Schema.define(version: 20160330132833) do
     t.integer  "rooms"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
+
+  add_index "flats", ["user_id"], name: "index_flats_on_user_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.string   "description"
@@ -38,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160330132833) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "flat_id"
+    t.string   "cloudinary"
   end
 
   add_index "photos", ["flat_id"], name: "index_photos_on_flat_id", using: :btree
@@ -74,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160330132833) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "flats", "users"
   add_foreign_key "photos", "flats"
   add_foreign_key "profiles", "users"
 end
