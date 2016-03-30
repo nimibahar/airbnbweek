@@ -15,18 +15,19 @@
           <h3><%= @flat.city %></h3>
           <h3>Price/night: €<%= @flat.price %></h3>
           <h3>Number of rooms: <%= @flat.rooms %></h3>
+
+
+          <% @flat.photos.each do |photo| %>
+
+          <div> <%= cl_image_tag photo.cloudinary, height: 400, width: 400, crop: :fill %>
+          </div>
+
+          <% end %>
+
+          <p class="btn btn-default"><%= link_to "Book It", new_flat_booking_path(@flat) %></p>
         </div>
       </div>
     </div>
-
-    <% @flat.photos.each do |photo| %>
-
-    <div> <%= cl_image_tag photo.cloudinary, height: 400, width: 400, crop: :fill %>
-    </div>
-
-    <% end %>
-
-    <p class="btn btn-default"><%= link_to "Book It", new_flat_booking_path(@flat) %></p>
   </div>
 
 
