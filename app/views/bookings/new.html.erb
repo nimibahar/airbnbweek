@@ -1,10 +1,15 @@
 <h1>Bookings#new</h1>
 <p>Find me in app/views/bookings/new.html.erb</p>
 
+<div class="container">
+  <div class="row">
+    <div class="col-sm-offset-4 col-sm-4">
+      <%= simple_form_for [@flat, @booking] do |f| %>
 
-<%= simple_form_for @user do |f| %>
-  <%= f.input :city %>
-  <%= f.input :field_name, html: { class: "daterange" } %>
-  <%= f.input :guests %>
-  <%= f.button :submit %>
-<% end %>
+      <%= f.input :check_in %>
+      <%= f.input :check_out %>
+      <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
