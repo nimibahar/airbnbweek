@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
    before_action :set_flat, only: [:new, :create, :show, :edit, :update, :destroy]
 
+   before_action :authenticate_user!
+
   # GET /bookings
   # GET /bookings.json
   def index
