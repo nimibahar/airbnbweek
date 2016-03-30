@@ -2,7 +2,6 @@ class FlatsController < ApplicationController
   before_action :flat, only: [:show, :edit, :destroy, :update]
 
   def index
-    # byebu//g
     @flats = Flat.where(city: params[:city])
     @city = params[:city]
 

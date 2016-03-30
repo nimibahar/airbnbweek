@@ -6,25 +6,33 @@
         </div>
       </div>
 
- -->
-<div class="container">
-<h3><%= @flat.address %></h3>
-<h3><%= @flat.city %></h3>
-<h3>Price/night: €<%= @flat.price %></h3>
-<h3>Number of rooms: <%= @flat.rooms %></h3>
+    -->
 
-<p class="btn btn-default"><%= link_to "Edit Flat", edit_flat_path(@flat) %></p>
-<p class="btn btn-default"><%= link_to "Delete", flat_path(@flat), method: :delete %> </p>
-<br>
-<h2> Photos </h2>
-<% @flat.photos.each do |p| %>
-<%= p.file_key %>
-<% end %>
+    <div class="container text-center">
+      <h3><%= @flat.address %></h3>
+      <h3><%= @flat.city %></h3>
+      <h3>Price/night: €<%= @flat.price %></h3>
+      <h3>Number of rooms: <%= @flat.rooms %></h3>
 
-<h1>Add Photo</h1>
+      <% @flat.photos.each do |photo| %>
 
-<%= simple_form_for [@flat, Photo.new], html: { class: 'form-horizontal' }  do |f| %>
-  <%= f.input :file_key %>
-  <%= f.button :submit %>
-<% end %>
-</div>
+          <div> <%= cl_image_tag photo.cloudinary, height: 400, width: 400, crop: :fill %>
+          </div>
+
+      <% end %>
+    </div>
+
+
+    <div class="container">
+      <h1>Add Photo</h1>
+
+      <%= simple_form_for Photo.new, html: { class: 'form-horizontal' } do |f| %>
+      <%= f.input :flat_id, :as => :hidden, :input_html => { :value => @flat.id } %>
+      <%= f.input :cloudinary %>
+      <%= f.input :cloudinary_cache, as: :hidden %>
+      <%= f.button :submit %>
+      <% end %>
+    </div>
+
+
+
