@@ -6,7 +6,7 @@
     </p>
 
     <div class="how-it-works-btn">
-    <a class="btn btn-primary btn-lg">How it works</a>
+    <a href="#how-to" class="btn btn-primary btn-lg">How it works</a>
     </div>
 
     <div class="col-sm-12">
@@ -46,3 +46,82 @@
   <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 
   <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+
+<!-- cities cards code -->
+  <div class="wrapper-grey padded">
+
+    <div class="container">
+  <div class="row">
+  <h2 class="text-center">Your next trip could be in one of these cool cities</h2>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" id="parisphoto">
+      <div class="card-category">Paris</div>
+      <a class="card-link" href="#"></a>
+    </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <!-- insert <div class="card"> -->
+      <div class="card" id="brusselsphoto">
+      <div class="card-category">Brussels</div>
+      <a class="card-link" href="#"></a>
+    </div>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <!-- insert <div class="card"> -->
+      <div class="card" id="amsterdamphoto">
+      <div class="card-category">Amsterdam</div>
+      <a class="card-link" href="#"></a>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="newsletter" class="text-center padded">
+    <h2>Get news from us</h2>
+    <p>Leave us your mail and get news from us.</p>
+    <form action="#" class="form-inline">
+  <input type="email" class="form-control" placeholder="martin@gmail.com"></input>
+  <a href="" class="btn btn-primary btn bordered btn-bordered primary" onclick="return confirm('You are now subscribed');">Subscribe</a>
+</form>
+</div>
+
+
+<div class="bannernew">
+
+<div class="container text-center padded features">
+   <div class="row">
+     <div class="col-xs-12 col-sm-6 col-md-3">
+       <!-- <img src="images/globe.png" alt=""> -->
+       <%= image_tag "globe.png" %>
+       <h2>Discover the world</h2>
+       <p>The earth is your new home.</p>
+     </div>
+     <div class="col-xs-12 col-sm-6 col-md-3">
+       <!-- <img src="images/dollar.png" alt=""> -->
+       <%= image_tag "dollar.png" %>
+       <h2>Pay online</h2>
+       <p>No cash issues anymore.</p>
+     </div>
+     <div class="col-xs-12 col-sm-6 col-md-3">
+       <!-- <img src="images/beer.png" alt=""> -->
+       <%= image_tag "beer.png" %>
+       <h2>Meet people</h2>
+       <p>Discover new culture and lifestyle.</p>
+     </div>
+     <div class="col-xs-12 col-sm-6 col-md-3">
+       <!-- <img src="images/heart.png" alt=""> -->
+       <%= image_tag "heart.png" %>
+       <h2>Share and love</h2>
+       <p>Join a community you will love.</p>
+     </div>
+   </div>
+ </div>
+ </div>
+
+ <div id="how-to">
+   <div class="container text-center padded features">
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/SaOFuW011G8" frameborder="0" allowfullscreen></iframe>
+   </div>
+ </div>
+

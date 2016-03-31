@@ -25,12 +25,7 @@
 
 
     <!-- Notification -->
-    <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-    <div class="badge-container">
-      <i class="fa fa-envelope-o"></i>
-      <div class="badge badge-blue">3</div>
-    </div>
-    <% end %>
+
 
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
@@ -48,6 +43,12 @@
             <%= link_to profile_path(current_user, current_user.profile) do %>
             <i class="fa fa-user"></i> <%= t ".profile", default: "View Profile" %>
             <% end %>
+
+            <li>
+              <%= link_to new_flat_path do %>
+              <i class="fa fa-plus"></i>  <%= t ".profile", default: "Add a flat" %>
+              <% end %>
+            </li>
 
             <% else %>
 
@@ -69,11 +70,7 @@
             <i class="fa fa-sign-out"></i>  <%= t ".sign_out", default: "Log out" %>
             <% end %>
           </li>
-          <li>
-            <%= link_to new_flat_path do %>
-            <i class="fa fa-plus"></i>  <%= t ".profile", default: "Add a flat" %>
-            <% end %>
-          </li>
+
         </ul>
       </div>
     </div>
