@@ -4,6 +4,7 @@ ruby '2.3.0'
 gem 'rails_12factor', group: :production
 gem 'puma',           group: :production
 
+gem 'geocoder'
 gem 'cloudinary'
 gem 'carrierwave'
 gem 'figaro'
@@ -14,6 +15,12 @@ gem 'font-awesome-sass', '~> 4.2.0'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
+
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
