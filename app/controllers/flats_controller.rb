@@ -4,11 +4,19 @@ class FlatsController < ApplicationController
   def index
     @flats = Flat.where(city: params[:city])
     @city = params[:city]
-
+        # Let's DYNAMICALLY build the markers for the view.
+    @markers = Gmaps4rails.build_markers(@flats) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
   end
 
   def show
-
+# I'm using [@flat] because I need only this specific flat but I could use an array of flats also.
+    @markers = Gmaps4rails.build_markers([@flat]) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
   end
 
   def new
@@ -43,13 +51,13 @@ class FlatsController < ApplicationController
     redirect_to root_path
   end
 
-private
+  private
 
   def flat
     @flat = Flat.find(params[:id])
   end
 
   def flat_params
-    params.require(:flat).permit(:address, :city, :price, :rooms, :user_id)
+    params.require(:flat).permit(:address, :city, :price, :rooms, :user_id )
   end
 end
