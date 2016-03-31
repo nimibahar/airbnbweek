@@ -24,7 +24,7 @@
 
           <% end %>
 
-          <p class="btn btn-default"><%= link_to "Book It", new_flat_booking_path(@flat) %></p>
+
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
       <div class="col-sm-offset-4 col-sm-4">
 
        <% if current_user %>
-          <% if current_user.id == @flat.user_id %>
+          <% if current_user.id == @flat.user_id %> <!-- if current user is the owner of this flat -->
               <h1>Add Photo</h1>
 
               <%= simple_form_for Photo.new, html: { class: 'form-horizontal' } do |f| %>
@@ -58,4 +58,17 @@
     </div>
   </div>
 
+  <div id="map" style="width: 100%; height: 600px;"></div>
 
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    })
+  <% end %>
+<% end %>
