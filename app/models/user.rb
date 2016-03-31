@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_one :profile
 
   has_many :bookings
-
+  has_many :flats
   after_create :initialize_profile
 
   def initialize_profile
