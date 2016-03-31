@@ -14,7 +14,6 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     # @flat = Flat.find(params[:flat_id])
-
   end
 
   # GET /bookings/new
@@ -32,6 +31,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.flat = @flat
+
     respond_to do |format|
       if @booking.save
         format.html { redirect_to flat_booking_path(@flat,@booking), notice: 'booking was successfully created.' }
