@@ -24,7 +24,7 @@
 
           <% end %>
 
-          <p class="btn btn-default"><%= link_to "Book It", new_flat_booking_path(@flat) %></p>
+
         </div>
       </div>
     </div>
@@ -36,17 +36,25 @@
     <div class="row">
       <div class="col-sm-offset-4 col-sm-4">
 
-        <% if current_user.id == @flat.user_id %>
-        <h1>Add Photo</h1>
+       <% if current_user %>
+          <% if current_user.id == @flat.user_id %> <!-- if current user is the owner of this flat -->
+              <h1>Add Photo</h1>
 
-        <%= simple_form_for Photo.new, html: { class: 'form-horizontal' } do |f| %>
-        <%= f.input :flat_id, :as => :hidden, :input_html => { :value => @flat.id } %>
-        <%= f.input :cloudinary %>
-        <%= f.input :cloudinary_cache, as: :hidden %>
-        <%= f.button :submit %>
-        <% end %>
-      </div>
+              <%= simple_form_for Photo.new, html: { class: 'form-horizontal' } do |f| %>
+                <%= f.input :flat_id, :as => :hidden, :input_html => { :value => @flat.id } %>
+                <%= f.input :cloudinary %>
+                <%= f.input :cloudinary_cache, as: :hidden %>
+              <%= f.button :submit %>
+
+              <% end %>
+          <% else %>
+              <p class="btn btn-default"><%= link_to "Book It", new_flat_booking_path(@flat) %></p>
+          <% end %>
+
       <% end %>
+
+      </div>
+
     </div>
   </div>
 

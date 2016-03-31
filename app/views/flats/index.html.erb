@@ -9,6 +9,7 @@
     <div class="card" style="background-image: url('<%= image_url flat.photos.first.try(:cloudinary) %>');" >
       <div class="card-category"><%= flat.price %>€</div>
       <div class="card-description"> <%= flat.address %> </div>
+
     </div>
 
     <% end %>
