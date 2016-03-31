@@ -3,19 +3,20 @@
 <div class="container">
   <div class="row">
 
-  <% @flats.each do |flat| %>
-  <div class="col-xs-12 col-md-4">
-    <%= link_to flat_path(flat) do %>
-    <div class="card" style="background-image: url('<%= image_url flat.photos.first.try(:cloudinary) %>');" >
-      <div class="card-category"><%= flat.price %>€</div>
-      <div class="card-description"> <%= flat.address %> </div>
+    <% @flats.each do |flat| %>
+    <div class="col-xs-12 col-md-4">
+      <%= link_to flat_path(flat) do %>
+      <div class="card" style="background-image: url('<%= image_url flat.photos.first.try(:cloudinary) %>');" >
+        <div class="card-category"><%= flat.price %>€</div>
+        <div class="card-description"> <%= flat.address %> </div>
 
+        <img class="card-user avatar avatar-large" src=" <%= flat.user.profile.photo %> ">
+      </div>
+
+      <% end %>
     </div>
-
     <% end %>
   </div>
-  <% end %>
-</div>
 </div>
 
 <div id="map" style="width: 400px; height: 600px;"></div>
