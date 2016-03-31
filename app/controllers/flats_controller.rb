@@ -4,7 +4,7 @@ class FlatsController < ApplicationController
   def index
     @flats = Flat.where(city: params[:city])
     @city = params[:city]
-    byebug
+
   end
 
   def show
