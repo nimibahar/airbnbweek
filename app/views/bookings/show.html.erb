@@ -4,8 +4,14 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
+      <%= cl_image_tag @booking.flat.photos.first.cloudinary, height: 400, width: 400, crop: :fill %>
       Check in date: <%= @booking.check_in %><br>
       Check out date: <%= @booking.check_out %>
     </div>
   </div>
 </div>
+
+
+
+
+
