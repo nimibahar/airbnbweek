@@ -42,7 +42,6 @@ ActiveRecord::Schema.define(version: 20160331094639) do
 
   create_table "photos", force: :cascade do |t|
     t.string   "description"
-    t.string   "file_key"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "flat_id"
