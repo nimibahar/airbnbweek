@@ -4,7 +4,6 @@ class FlatsController < ApplicationController
   def index
     @flats = Flat.where(city: params[:city])
     @city = params[:city]
-    byebug
   end
 
   def show
@@ -16,9 +15,9 @@ class FlatsController < ApplicationController
   end
 
   def create
-    user = current_user
+
     @flat = Flat.new(flat_params)
-    @flat.user = user
+    @flat.user = current_user
     if @flat.save
       redirect_to flat_path(@flat)
     else
