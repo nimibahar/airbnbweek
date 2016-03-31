@@ -2,10 +2,22 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :omniauthable, omniauth_providers: [:facebook]
+
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable
+
   has_one :profile
+
   has_many :bookings
+
+  after_create :initialize_profile
+
+  def initialize_profile
+    p = Profile.new
+    p.user_id = self.id
+    p.save
+  end
+
   def self.find_for_facebook_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -19,4 +31,5 @@ class User < ActiveRecord::Base
       # user.token_expiry = Time.at(auth.credentials.expires_at)
     end
   end
+
 end

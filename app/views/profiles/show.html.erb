@@ -4,35 +4,33 @@
       <h2><%= image_tag @profile.photo.url(:bright_face) , id: "avatar" %>
         <%= @profile.fname %> <%= @profile.lname%></h2>
       </div>
-      <div class="media-section">
-        <h2>Pictures</h2>
-        <%= image_tag 'amazingbackgroung.jpg' %>
-      </div>
-    </div>
-    <div class="media-aside">
-      <div class="media-section">
-        <h2>Share</h2>
-        <div class="share-links">
-          <a href="#" class="share-link bg-facebook">
-            <i class="fa fa-facebook"></i>
-          </a>
-          <a href="#" class="share-link bg-twitter">
-            <i class="fa fa-twitter"></i>
-          </a>
-          <a href="#" class="share-link bg-email">
-            <i class="fa fa-envelope-o"></i>
-          </a>
-          <a href="#" class="share-link bg-text">
-            <i class="fa fa-mobile"></i>
-          </a>
-        </div>
-      </div>
+
       <div class="media-section">
         <h2>Description</h2>
-        <%= @user.email %>
+        <%= @profile.fname %>'s listing:
       </div>
       <div class="media-section">
 
+      <% @flats.each do |flat| %>
+        <% flat.photos.each do |photo| %>
+          <%= cl_image_tag photo.cloudinary, height: 100, width: 100, crop: :fill %><br>
+          <p><%= flat.city %></p>
+        <% end %>
+      <% end %>
+
+
+      ---------------------------------------------------------------
+
+      My upcoming Trips:
+
+      <% @bookings.each do |booking| %>
+        <% booking.flat.photos.each do |photo| %>
+          <%= cl_image_tag photo.cloudinary, height: 100, width: 100, crop: :fill %><br>
+        <% end %><br>
+        Check in    <%= booking.check_in %><br>
+        Check out   <%= booking.check_out %>
+
+      <% end %>
 
       </div>
     </div>
