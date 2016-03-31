@@ -18,6 +18,12 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
+    <!-- Button (call-to-action) -->
+    <div class="navbar-wagon-item navbar-wagon-button btn">
+    <%= link_to "Dashboard", dashboard_path %>
+    </div>
+
+
     <!-- Notification -->
     <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
     <div class="badge-container">
@@ -35,17 +41,17 @@
 
             <% if(current_user.profile) %>
 
-            <%= link_to edit_user_profile_path(current_user, current_user.profile) do %>
+            <%= link_to edit_profile_path(current_user, current_user.profile) do %>
             <i class="fa fa-user"></i> <%= t ".profile", default: "Edit Profile" %>
             <% end %>
 
-            <%= link_to user_profile_path(current_user, current_user.profile) do %>
+            <%= link_to profile_path(current_user, current_user.profile) do %>
             <i class="fa fa-user"></i> <%= t ".profile", default: "View Profile" %>
             <% end %>
 
             <% else %>
 
-            <%= link_to new_user_profile_path(current_user) do %>
+            <%= link_to new_profile_path(current_user) do %>
             <i class="fa fa-user"></i> <%= t ".profile", default: "New Profile" %>
             <% end %>
 
@@ -79,7 +85,6 @@
 
     <% end %>
 
-    <!-- Button (call-to-action) -->
 
   </div>
 
