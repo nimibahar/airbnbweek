@@ -5,6 +5,7 @@ class FlatsController < ApplicationController
     @flats = Flat.where(city: params[:city])
     @city = params[:city]
 
+
         # Let's DYNAMICALLY build the markers for the view.
     @markers = Gmaps4rails.build_markers(@flats) do |flat, marker|
       marker.lat flat.latitude

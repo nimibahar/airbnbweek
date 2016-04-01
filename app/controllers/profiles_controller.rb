@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
   def show
     @flats = Flat.where(user_id: current_user.id)
     @bookings = Booking.where(user_id: current_user.id)
+    @favourites = Favourite.where(user_id: current_user.id)
   end
 
   # GET /profiles/1/edit

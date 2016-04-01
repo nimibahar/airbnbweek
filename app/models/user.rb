@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :bookings
   has_many :flats
+  has_many :favourites
   after_create :initialize_profile
 
   def initialize_profile

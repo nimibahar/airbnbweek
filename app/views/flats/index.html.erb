@@ -9,27 +9,40 @@
       <div class="card" style="background-image: url('<%= image_url flat.photos.first.try(:cloudinary) %>');" >
         <div class="card-category"><%= flat.price %>€</div>
         <div class="card-description"> <%= flat.address %> </div>
-
         <img class="card-user avatar avatar-large" src=" <%= flat.user.profile.photo %> ">
       </div>
+      <% end %>
+
+      <% if Favourite.exists?(user_id: current_user) && Favourite.exists?(flat_id: flat) %>
+          <div class="card-heart">
+            <i class="fa fa-heart"> </i>
+          </div>
+
+      <% else %>
+          <% link_to favourites_path(flat: flat), method: :post do %>
+          <div class="card-heart-o">
+            <i class="fa fa-heart-o"> </i>
+          </div>
+          <% end %>
 
       <% end %>
     </div>
     <% end %>
   </div>
+
 </div>
 
 <div id="map" style="width: 400px; height: 600px;"></div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).on('ready', function() {
-      handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function(){
-        markers = handler.addMarkers(<%= raw @markers.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-      });
-    })
-  <% end %>
+<%= javascript_tag do %>
+$(document).on('ready', function() {
+handler = Gmaps.build('Google');
+handler.buildMap({ internal: { id: 'map' } }, function(){
+markers = handler.addMarkers(<%= raw @markers.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+});
+})
+<% end %>
 <% end %>

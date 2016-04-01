@@ -53,6 +53,28 @@
         <% end %>
       </div>
 
+      <div class="media-section jumbotron">
+        <% if(@profile.user.flats.count > 0) %>
+        <h2>My Favourites</h2>
+        <% @favourites.each do |favourite| %>
+        <% flat = favourite.flat %>
+        <% flat.photos.each do |photo| %>
+        <%= cl_image_tag photo.cloudinary, height: 100, width: 100, crop: :fill %><br>
+        <p><%= flat.city %></p>
+        <% end %>
+        <% end %>
+
+        <%else%>
+
+        <h2>Want to rent your room?</h2>
+
+        <%= link_to "Create an Add", new_flat_path, class:"btn btn-warning", type:"button" %>
+
+        <% end %>
+      </div>
+
+
+
     </div>
   </div>
 </div>
