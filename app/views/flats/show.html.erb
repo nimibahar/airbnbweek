@@ -51,10 +51,14 @@
               <% end %>
 
               <div class="media-section"></div>
-              <div class="media-aside">
+              <div class="media-aside form-inline">
 
+              <%= link_to "Go to dashboard", profile_path, class:"btn btn-warning", type:"button" %>
 
-              <%= link_to "Create Listing", profile_path, class:"btn btn-warning", type:"button" %>
+              <%= link_to "Edit", edit_flat_path(@flat), class:"btn btn-warning", type:"button" %>
+
+              <%= link_to "Delete Flat", flat_path(@flat), method: :delete, class:"btn btn-warning", type:"button" %>
+
               </div>
               </div>
 
