@@ -6,7 +6,15 @@ class Flat < ActiveRecord::Base
   geocoded_by :full_address
   after_validation :geocode, if: :address_changed?
 
+  # accepts_nested_attributes_for :photos
+
   def full_address
     address + ' ' + city
+  end
+
+  after_create :generate_photo
+
+  def generate_photo
+    Photo.create(flat: self)
   end
 end

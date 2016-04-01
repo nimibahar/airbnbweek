@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:flat_id, :cloudinary, :cloudinary_cache)
+    params.require(:photo).permit(:flat_id, :cloudinary, :cloudinary_cache, :description, :file_key)
   end
 end
 

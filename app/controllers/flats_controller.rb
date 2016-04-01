@@ -26,10 +26,12 @@ class FlatsController < ApplicationController
   end
 
   def create
-
     @flat = Flat.new(flat_params)
     @flat.user = current_user
     if @flat.save
+      p = @flat.photos.first
+      p.cloudinary = params[:flat][:photo][:cloudinary]
+      p.save
       redirect_to flat_path(@flat)
     else
       render :new
@@ -61,6 +63,7 @@ class FlatsController < ApplicationController
   end
 
   def flat_params
-    params.require(:flat).permit(:address, :city, :price, :rooms, :user_id )
+    params.require(:flat).permit(:address, :city, :price, :rooms, :user_id,
+     photos_attributes: [:id, :file_key , :cloudinary, :cloudinary_cache, :description] )
   end
 end
