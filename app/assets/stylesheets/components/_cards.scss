@@ -18,6 +18,21 @@
   font-size: 10px;
   text-transform: uppercase;
 }
+.card-heart-o {
+  position: absolute;
+  top: 10px;
+  left: 170px;
+  font-size: 30px;
+  z-index: 5;
+}
+.card-heart {
+  position: absolute;
+  top: 10px;
+  left: 170px;
+  font-size: 30px;
+  color: red;
+  z-index: 5;
+}
 .card-description {
   position: absolute;
   bottom: 10px;

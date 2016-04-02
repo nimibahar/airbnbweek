@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   root 'pages#welcome'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
@@ -12,6 +14,7 @@ Rails.application.routes.draw do
 
   get '/dashboard' => 'profiles#show'
 
+  resources :favourites, only: [:create, :index, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".r
   # You can have the root of your site routed with "root"

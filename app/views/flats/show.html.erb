@@ -18,14 +18,12 @@
           <h3>Price/night: €<%= @flat.price %></h3>
           <h3>Number of rooms: <%= @flat.rooms %></h3>
 
-
           <% @flat.photos.each do |photo| %>
 
           <div> <%= cl_image_tag photo.cloudinary, height: 400, width: 400, crop: :fill %>
           </div>
 
           <% end %>
-
 
         </div>
       </div>
