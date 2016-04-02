@@ -1,38 +1,59 @@
+
+
 <h1>Flats available in <%= @city %></h1>
 
-<div class="container">
-  <div class="row">
 
-    <% @flats.each do |flat| %>
-    <div class="col-xs-12 col-md-4">
-      <%= link_to flat_path(flat) do %>
-      <div class="card" style="background-image: url('<%= image_url flat.photos.first.try(:cloudinary) %>');" >
-        <div class="card-category"><%= flat.price %>€</div>
-        <div class="card-description"> <%= flat.address %> </div>
-        <img class="card-user avatar avatar-large" src=" <%= flat.user.profile.photo %> ">
-      </div>
-      <% end %>
+<div class="media">
+  <div class="media-body">
+    <div class="media-section">
+      <div class="container">
+        <div class="row">
 
-      <% if Favourite.exists?(user_id: current_user) && Favourite.exists?(flat_id: flat) %>
-          <div class="card-heart">
-            <i class="fa fa-heart"> </i>
+          <% @flats.each do |flat| %>
+          <div class="col-xs-12 col-md-4">
+            <%= link_to flat_path(flat) do %>
+            <div class="card" style="background-image: url('<%= image_url flat.photos.first.try(:cloudinary) %>');" >
+                <div class="card-category"><%= flat.price %>€</div>
+                <div class="card-description"> <%= flat.address %> </div>
+                <img class="card-user avatar avatar-large" src=" <%= flat.user.profile.photo %> ">
+              <% favourite = Favourite.find_by user_id: current_user, flat_id: flat %>
+              <% if Favourite.exists?(user_id: current_user) &&
+                    Favourite.exists?(flat_id: flat) %>
+                    <%= link_to favourite_path(id: favourite), method: :delete  do %>
+                      <div class="card-heart">
+                        <i class="fa fa-heart"> </i>
+                      </div>
+                  <% end %>
+              <% else %>
+                  <%= link_to favourites_path(flat: flat), method: :post do %>
+                    <div class="card-heart-o">
+                      <i class="fa fa-heart-o"> </i>
+                    </div>
+                  <% end %>
+
+              <% end %>
+
+            </div>
+
+            <% end %>
+
           </div>
 
-      <% else %>
-          <% link_to favourites_path(flat: flat), method: :post do %>
-          <div class="card-heart-o">
-            <i class="fa fa-heart-o"> </i>
-          </div>
           <% end %>
+        </div>
+      </div>
 
-      <% end %>
+
     </div>
-    <% end %>
   </div>
 
-</div>
+  <div class="media-aside">
+    <div class="media-section">
+     <div id="map" style="width: 400px; height: 600px;"></div>
+   </div>
+ </div>
 
-<div id="map" style="width: 400px; height: 600px;"></div>
+</div>
 
 <% content_for(:after_js) do %>
 <%= javascript_tag do %>
@@ -46,3 +67,4 @@ handler.fitMapToBounds();
 })
 <% end %>
 <% end %>
+

@@ -4,7 +4,7 @@ class FavouritesController < ApplicationController
     favourite.user = current_user
     favourite.flat_id = params[:flat].to_i
     favourite.save
-    redirect_to flat_path(params[:flat])
+    redirect_to :back
   end
 
   def index
@@ -14,6 +14,6 @@ class FavouritesController < ApplicationController
   def destroy
     f = Favourite.find(params[:id])
     f.destroy
-    redirect_to favourites_path
+    redirect_to :back
   end
 end

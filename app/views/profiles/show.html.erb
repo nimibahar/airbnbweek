@@ -1,58 +1,72 @@
-<div class="media">
+<div  class="media">
   <div class="media-body">
-    <div class="jumbotron text-center">
-      <div class="media-section">
-        <%= image_tag @profile.photo.url(:bright_face) , class: "avatar-large" %>
-        <h2><%= @profile.fname %> <%= @profile.lname%></h2>
-        <ul class='list-unstyled'>
-          <li>First Name: <%= @profile.fname %></li>
-          <li>Last Name: <%= @profile.lname %></li>
-          <li>E-mail: <%= current_user.email %></li>
-          <li>City: <%= @profile.city %></li>
-          <li>Description: <%= @profile.description%></li>
-        </ul>
-      </div>
+
+    <div class="media-section text-center">
+      <%= image_tag @profile.photo.url(:bright_face) , class: "avatar-large" %>
+      <h2><%= @profile.fname %> <%= @profile.lname%></h2>
+      <ul class='list-unstyled'>
+        <li>First Name: <%= @profile.fname %></li>
+        <li>Last Name: <%= @profile.lname %></li>
+        <li>E-mail: <%= current_user.email %></li>
+        <li>City: <%= @profile.city %></li>
+        <li>Description: <%= @profile.description%></li>
+      </ul>
     </div>
+
 
 
     <div class="media-section">
 
     </div>
-    <div class="media-aside text-center">
-      <div class="media-section jumbotron">
-        <% if(@profile.user.flats.count > 0) %>
-        <h2>My Flats</h2>
-        <% @flats.each do |flat| %>
-        <% flat.photos.each do |photo| %>
-        <%= cl_image_tag photo.cloudinary, height: 100, width: 100, crop: :fill %><br>
-        <p><%= flat.city %></p>
-        <% end %>
-        <% end %>
+  </div>
+  <div class="media-aside text-center">
 
-        <%else%>
+    <div class="media-section">
+      <h2>My upcoming Trips:</h2>
+      <% if (current_user.bookings.count > 0) %>
 
-        <h2>Want to rent your room?</h2>
+      <% @bookings.each do |booking| %>
+      <% booking.flat.photos.each do |photo| %>
+      <%= cl_image_tag photo.cloudinary, height: 100, width: 100, crop: :fill %><br>
+      <% end %><br>
+      Check in    <%= booking.check_in %><br>
+      Check out   <%= booking.check_out %>
+      <% end %>
+      <%else%>
+      <p>You don't have trips booked.</p>
+      <% end %>
+    </div>
 
-        <%= link_to "Create an Add", new_flat_path, class:"btn btn-warning", type:"button" %>
+  </div>
+
+
+</div>
+
+<div id="flat-list" class="jumbotron text-center">
+  <% if(@profile.user.flats.count > 0) %>
+  <h2>My Flats</h2>
+  <div class="container">
+    <div class="row">
+      <% @flats.each do |flat| %>
+      <div class="col-xs-12 col-md-4">
+        <%= link_to flat_path(flat) do %>
+        <div class="card" style="background-image: url('<%= image_url flat.photos.first.try(:cloudinary) %>');" >
+          <div class="card-category"><%= flat.price %>€</div>
+          <div class="card-description"> <%= flat.address %> </div>
+
+          <img class="card-user avatar avatar-large" src=" <%= flat.user.profile.photo %> ">
+        </div>
+
 
         <% end %>
       </div>
-      <div class="media-section jumbotron">
-        <h2>My upcoming Trips:</h2>
-        <% if (current_user.bookings.count > 0) %>
+      <% end %>
 
-        <% @bookings.each do |booking| %>
-        <% booking.flat.photos.each do |photo| %>
-        <%= cl_image_tag photo.cloudinary, height: 100, width: 100, crop: :fill %><br>
-        <% end %><br>
-        Check in    <%= booking.check_in %><br>
-        Check out   <%= booking.check_out %>
-        <% end %>
-        <%else%>
-        <p>You don't have trips booked.</p>
-        <% end %>
-      </div>
+      <%else%>
 
+      <h2>Want to rent your room?</h2>
+
+<<<<<<< HEAD
       <div class="media-section jumbotron">
         <% if(@profile.user.flats.count > 0) %>
         <h2>My Favourites</h2>
@@ -75,6 +89,12 @@
 
 
 
+=======
+      <%= link_to "Create an Add", new_flat_path, class:"btn btn-warning", type:"button" %>
+
+      <% end %>
+>>>>>>> 4bc4678e1b73602f91bf2680b16d58d32e5d162c
     </div>
   </div>
 </div>
+
